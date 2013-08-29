@@ -1,6 +1,10 @@
 module Yohoushi::SpecHelper
   def escape(str)
-    URI.escape(str) if str
+    URI.escape(lstrip(str, "/")) if str
+  end
+
+  def lstrip(string, substring)
+    string.index(substring) == 0 ? string[substring.size..-1] : string
   end
 
   def base_uri
